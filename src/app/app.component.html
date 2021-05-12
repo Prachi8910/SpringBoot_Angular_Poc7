@@ -1,0 +1,48 @@
+<nav class="fixed-nav-bar navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Links -->
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+        <a *ngIf="authenticationService.isUserLoggedIn() "  routerLink="users" class="nav-link" routerLinkActive="active"><h4>UserList</h4></a>
+    </li>
+    <li class="nav-item">
+        <a *ngIf="authenticationService.isUserLoggedIn() " routerLink="add" class="nav-link" routerLinkActive="active"><h4>AddUser</h4></a>
+    </li>
+    <!-- <li class="nav-item">
+      <a routerLink="search" class="nav-link" routerLinkActive="active">Search User</a>
+  </li> -->
+
+  <li><a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="login" class="nav-link" routerLinkActive="active"><h4>Login</h4></a></li></ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li class="nav-item">
+      <a  *ngIf="authenticationService.isUserLoggedIn() "class="nav-link" routerLink="logout" (click)=handleLogout() routerLinkActive="active"><h4>Logout</h4></a>
+    </li>
+  </ul>
+ <!--  <ul>
+   <li class="nav-item">
+    <a  *ngIf="authenticationService.isUserLoggedIn() "class="nav-link" routerLink="logout" (click)=handleLogout() routerLinkActive="active"><h4>Logout</h4></a>
+  </li>
+</ul> -->
+  </div>
+ 
+</nav>
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">{{title}}</h2>
+  <hr>  
+  <div class="card">
+    <div class="card-body">
+  <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>

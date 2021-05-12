@@ -1,0 +1,79 @@
+<h3>Create User</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form #registerform="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.firstName" name="firstName" required #firstName="ngModel"
+     required size="10" minlength="3" maxlength="8">
+     <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+      <div [hidden]="!firstName.errors.required">
+        firstName is required!
+      </div>
+      <div [hidden]="!firstName.errors.minlength">
+        firstName must be at least 3 characters long.
+      </div>
+    </div></div>
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input type="text" class="form-control" id="lastName"  required  [(ngModel)]="user.lastName" name="lastName"  required #lastName="ngModel"
+      required size="10" minlength="3" maxlength="8">
+      <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+        <div [hidden]="!lastName.errors.required">
+          lastName is required!
+        </div>
+        <div [hidden]="!lastName.errors.minlength">
+          lastName must be at least 3 characters long.
+        </div>
+    </div></div>
+
+    <div class="form-group">
+      <label for="name">Email Id</label>
+      <input type="text" class="form-control" id="emailId"  required name="emailId" [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" name="email" required #email="ngModel"
+      [class.is-invalid]="email.invalid && email.touched">
+      <small class="text-danger"  [class.d-none]="email.valid || email.untouched">Please enter valid email id</small>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Phone Number</label>
+        <input type="text" class="form-control" id="phone"  required  [(ngModel)]="user.phoneNumber" required pattern=".*[0-9].*"  name="phoneNumber" required #phoneNumber="ngModel"
+        [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"  minlength="10" maxlength="10">
+        <small class="text-danger"  [class.d-none]="phoneNumber.valid || phoneNumber.untouched">Please enter valid  PhoneNumber</small>
+    </div>
+
+    <div class="form-group">
+        <label for="name">City</label>
+        <input type="text" class="form-control" id="city"  required  [(ngModel)]="user.city" name="city"  required #city="ngModel"
+        [class.is-invalid]="city.invalid && city.touched">
+        <small class="text-danger"  [class.d-none]="city.valid || city.untouched">Please enter City</small>
+    </div>
+
+    <div class="form-group">
+        <label for="name">State</label>
+        <input type="text" class="form-control" id="state"   required [(ngModel)]="user.state" name="state"  required #state="ngModel"
+        [class.is-invalid]="state.invalid && state.touched">
+        <small class="text-danger"  [class.d-none]="state.valid || state.untouched">Please enter State</small>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Country</label>
+        <input type="text" class="form-control" id="country"  required  [(ngModel)]="user.country" name="country"  required #country="ngModel"
+        [class.is-invalid]="country.invalid && country.touched">
+        <small class="text-danger"  [class.d-none]="country.valid || country.untouched">Please enter Country</small>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Zip Code</label>
+        <input type="text" class="form-control" id="zipCode"  [(ngModel)]="user.zipCode" name="zipCode"  required #zipCode="ngModel"
+        [class.is-invalid]="zipCode.invalid && zipCode.touched">
+        <small class="text-danger"  [class.d-none]="zipCode.valid || zipCode.untouched">Please enter zipCode</small>
+    </div>
+
+    <button [disabled]="registerform.form.invalid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

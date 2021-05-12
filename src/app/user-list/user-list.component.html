@@ -1,0 +1,79 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>User List</h3>
+    </div>
+    <div class="panel-body">
+      <!-- <input type="text" class="search-query form-control" placeholder="Search With FirstName"  name="name" [(ngModel)]="firstName"/>
+      <span class="input-group-btn">
+          <button class="btn btn-danger" type="button" (click)="findUserByFname()">
+              <span class=" glyphicon glyphicon-search"></span>
+          </button>
+      </span> -->
+      <div class="col-md-4">
+           <label>Search By</label> <select (change)="selectChangeHandler($event)">
+              <option value="" size="3">--Select--</option>
+              <option value="firstName">firstName</option>
+              <option value="city">City</option>
+              <option value="zipCode">zipCode</option>
+              <option value="state">State</option>
+              <option value="lastName">LastName</option>
+              <option value="email">EmailId</option>
+              <option value="country">Country</option>
+          </select>
+          <input type="text"
+            [(ngModel)]="filters.keyword"
+            name="keyword"
+            (input)="listUsers()" 
+            class="form-control"
+            placeholder="Search..." /> 
+           
+    </div>
+
+    
+    <table class="table table-hover table-dark table-responsive-md">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip Code</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users1 ">
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.state}}</td>
+            <td>{{user.country}}</td>
+            <td>{{user.zipCode}}</td>
+            <td>
+              <div class="btn-group">
+              <button (click)="deleteUser(user.id)" class="btn btn-danger btn-sm">Delete  <span class="glyphicon glyphicon-trash"></span></button> 
+                <button (click)="updateUser(user.id)" class="btn btn-warning  btn-sm">Edit <span class="glyphicon glyphicon-edit"></span></button>
+                <button (click)="userDetails(user.id)" class="btn btn-info  btn-sm" >View <span class="glyphicon glyphicon-eye-open"></span></button> 
+                </div>
+
+                
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
